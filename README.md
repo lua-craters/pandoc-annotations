@@ -50,3 +50,63 @@ git clone https://github.com/lua-craters/pandoc-annotations.git
    ```
 
 3. Reload your editor window.
+
+### 🛠️ Features
+
+* Complete AST Typing: Full definitions for pandoc.Div, pandoc.Str, pandoc.Meta, etc.
+* Utility Functions: Typed helpers for pandoc.utils.stringify, blocks_to_inlines, etc.
+* Global Environment: Pre-configured globals to eliminate "undefined global" warnings:
+  * pandoc, FORMAT, PANDOC_VERSION
+  * PANDOC_API_VERSION, PANDOC_SCRIPT_FILE
+  * lpeg, re (if used in your filters)
+* Lua 5.4 Targeted: Optimized for Pandoc 3.0+ (which runs on Lua 5.4).
+
+### 📝 Usage Example
+Once installed, you get full IntelliSense without extra setup:
+
+```lua
+-- No need for ---@module or manual requires!
+-- LLS now knows 'pandoc' and 'FORMAT' automatically.
+
+function Div(el)
+  -- Autocomplete works on 'el' as pandoc.Div
+  if el.classes:includes("important") then
+    return pandoc.Div(el.content, pandoc.Attr("", {"highlight"}, {}))
+  end
+end
+
+function Str(el)
+  -- Full type checking on string manipulation
+  local text = pandoc.utils.stringify(el)
+  return pandoc.Str(text:upper())
+end
+```
+
+### 🏗️ Project Structure
+
+```text
+pandoc-annotations/
+├── library/
+│   ├── pandoc.lua          # AST definitions
+│   └── pandoc_utils.lua    # Helper functions
+├── pandoc-annotations-1.0.0-1.rockspec
+├── config.json             # For manual installation support
+└── README.md
+```
+
+### 🤝 Contributing
+
+Contributions are welcome! If you find missing types or inaccuracies in the Pandoc API:
+
+1. Fork the repository.
+2. Edit the files in library/.
+3. Submit a Pull Request.
+
+### 📄 License
+MIT License – See LICENSE for details.
+
+### 🔗 References
+
+* [Pandoc Lua Filters Documentation](https://pandoc.org/lua-filters.html)
+* [Lua Language Server Addons](https://luals.github.io/wiki/addons/)
+* [Original Project (massifrg)](https://github.com/massifrg/pandoc-luals-annotations)
