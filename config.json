@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "name": "Pandoc Annotations",
+  "description": "LLS Addon for Pandoc (Legacy Manual Install)",
+  "words": [
+    "function[%s]+(Str|Para|Div|Header|CodeBlock|Image|Link)[%s]?%(",
+    "pandoc%.utils%.",
+    "PANDOC_VERSION"
+  ],
+  "settings": {
+    "Lua.diagnostics.globals": [
+      "pandoc",
+      "FORMAT",
+      "PANDOC_VERSION",
+      "PANDOC_API_VERSION",
+      "PANDOC_SCRIPT_FILE",
+      "PANDOC_STATE",
+      "PANDOC_READER_OPTIONS",
+      "PANDOC_WRITER_OPTIONS",
+      "lpeg",
+      "re"
+    ],
+    "Lua.runtime.version": "Lua 5.4",
+    "Lua.workspace.ignoreDir": [
+      ".git",
+      ".idea",
+      ".vscode"
+    ]
+  }
+}
