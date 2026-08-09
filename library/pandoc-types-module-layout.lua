@@ -1,0 +1,44 @@
+---@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
+---@meta pandoc-types-module-layout
+-- The `pandoc.layout` module (Doc-builder combinators for custom writers).
+--
+-- Part of the split pandoc-types LuaLS annotation set. Files in this set
+-- cross-reference each other's types freely -- LuaLS resolves @class/@alias
+-- names across ALL files in the same library folder, so file boundaries here
+-- are purely organizational and carry no functional meaning.
+
+---Plain-text document layouting.
+---@class PandocLayoutModule
+---@field after_break fun(text: string): Doc Creates a `Doc` which is conditionally included only if it comes at the beginning of a line.
+---@field before_non_blank fun(doc: Doc): Doc Conditionally includes the given `doc` unless it is followed by a blank space.
+---@field blankline userdata Inserts a blank line unless one exists already.
+---@field blanklines fun(n: integer): Doc Inserts blank lines unless they exist already.
+---@field braces fun(doc: Doc): Doc Puts the `doc` in curly braces.
+---@field brackets fun(doc: Doc): Doc Puts the `doc` in square brackets.
+---@field cblock fun(doc: Doc, width: integer): Doc Creates a block with the given width and content, aligned centered.
+---@field chomp fun(doc: Doc): Doc Chomps trailing blank space off of the `doc`.
+---@field concat fun(docs: Doc[], sep?: Doc): Doc Concatenates a list of `Doc`s.
+---@field cr userdata A carriage return. Does nothing if we're at the beginning of a line; otherwise inserts a newline.
+---@field double_quotes fun(doc: Doc): Doc Wraps a `Doc` in double quotes.
+---@field empty Doc The empty document.
+---@field flush fun(doc: Doc): Doc Makes a `Doc` flush against the left margin.
+---@field hang fun(doc: Doc, ind: integer, start: Doc): Doc Creates a hanging indent. The resulting `Doc` has `start` on the first line, and subsequent lines indented by `ind` spaces.
+---@field height fun(doc: Doc): integer|string Returns the height of a block or other `Doc`.
+---@field inside fun(contents: Doc, start: Doc, end: Doc): Doc Encloses a `Doc` inside a `start` and `end` `Doc`.
+---@field is_empty fun(doc: Doc): boolean Checks whether a `doc` is empty (equal to pandoc.layout.empty).
+---@field lblock fun(doc: Doc, width: integer): Doc Creates a block with the given width and content, aligned to the left.
+---@field literal fun(text: string): Doc Creates a `Doc` from a string.
+---@field min_offset fun(doc: Doc): integer|string Returns the minimal width of a `Doc` when reflowed at breakable spaces.
+---@field nest fun(doc: Doc, ind: integer): Doc Indents a `Doc` by the specified number of spaces.
+---@field nestle fun(doc: Doc): Doc Removes leading blank lines from a `Doc`.
+---@field nowrap fun(doc: Doc): Doc Makes a `Doc` non-reflowable.
+---@field offset fun(doc: Doc): integer|string Returns the width of a `Doc` as number of characters.
+---@field parens fun(doc: Doc): Doc Puts the `Doc` in parentheses.
+---@field prefixed fun(doc: Doc, prefix: string): Doc Uses the specified string as a prefix for every line of the inside document (except the first, if not at the beginning of the line).
+---@field quotes fun(doc: Doc): Doc Wraps a `Doc` in single quotes.
+---@field rblock fun(doc: Doc, width: integer): Doc Creates a block with the given width and content, aligned to the right.
+---@field real_length fun(str: string): integer|string Returns the real length of a string in a monospace font: `0` for a combining character, `1` for a regular character, `2` for an East Asian wide character.
+---@field render fun(doc: Doc, colwidth: integer): Doc Render `Doc`. The text is reflowed on breakable spaces to match the given line length. Text is not reflowed if the line length parameter is omitted or `nil`.
+---@field space userdata A breaking (reflowable) space.
+---@field update_column fun(doc: Doc, i: integer): integer|string Returns the column that would be occupied by the last laid out character, starting from `i`.
+---@field vfill fun(border: string): Doc An expandable border that, when placed next to a box, expands to the height of the box. Strings cycle through the list provided.

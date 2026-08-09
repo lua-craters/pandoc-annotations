@@ -1,0 +1,25 @@
+---@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
+---@meta pandoc-types-module-mediabag
+-- The `pandoc.mediabag` module and its item-summary type.
+--
+-- Part of the split pandoc-types LuaLS annotation set. Files in this set
+-- cross-reference each other's types freely -- LuaLS resolves @class/@alias
+-- names across ALL files in the same library folder, so file boundaries here
+-- are purely organizational and carry no functional meaning.
+
+---The `pandoc.mediabag` module allows accessing pandoc’s media storage. The "media bag" is used when `pandoc` is called with the `--extract-media` or (for HTML only) `--embed-resources` option.
+---@class PandocMediabagModule
+---@field delete fun(filepath: string) Removes a single entry from the media bag.
+---@field empty fun() Clear-out the media bag, deleting all items.
+---@field fetch fun(source: Source): string,string|nil,nil Fetches the given source from a URL or local file. Returns two values: the MIME type (or an empty string) and the contents of the file. NOTE: confirmed by testing — the previous docstring here had the return order backwards.
+---@field fill fun(doc: Pandoc): Pandoc Fills the mediabag with the images in the given document. An image that cannot be retrieved will be replaced with a `Span` of class "image" that contains the image description.
+---@field insert fun(filepath: string, mimetype: string, contents: string) Adds a new entry to pandoc’s media bag. Replaces any existing media bag entry the same `filepath`.
+---@field items fun(): IteratorFunction,IteratorState,IteratorValue Returns an iterator triple to be used with Lua’s generic `for` statement.
+---@field list fun(): MediabagItemSummary[] Get a summary of the current media bag contents.
+---@field lookup fun(filepath: string): string,string|nil,nil Lookup a media item in the media bag, and return its MIME type and contents.
+---@field write fun(dir: string, fp?: string) Writes the contents of mediabag to the given target directory. If `fp` is given, then only the resource with the given name will be extracted.
+
+---@class MediabagItemSummary
+---@field path string Filepath of a Mediabag entry.
+---@field type string MIME type of a Mediabag entry.
+---@field length integer Length of contents of a Mediabag entry in bytes.

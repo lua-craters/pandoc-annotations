@@ -1,0 +1,25 @@
+---@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
+---@meta pandoc-types-module-utils
+-- The `pandoc.utils` module (stringify, type, hierarchicalize, and friends).
+--
+-- Part of the split pandoc-types LuaLS annotation set. Files in this set
+-- cross-reference each other's types freely -- LuaLS resolves @class/@alias
+-- names across ALL files in the same library folder, so file boundaries here
+-- are purely organizational and carry no functional meaning.
+
+---This module exposes internal pandoc functions and utility functions.
+---@class PandocUtilsModule
+---@field blocks_to_inlines fun(blocks: Blocks, sep?: Inlines): Inlines Squash a list of blocks into a list of inlines.
+---@field citeproc fun(doc: Pandoc): Pandoc Process the citations in the file, replacing them with rendered citations and adding a bibliography.
+---@field equals fun(element1: any, element2: any): boolean Test equality of AST elements. __This function is deprecated__.
+---@field from_simple_table fun(simple_tbl: SimpleTable): Table Creates a `Table` block element from a `SimpleTable`.
+---@field make_sections fun(number_sections: boolean, baselevel: integer|nil, blocks: Blocks): Blocks Converts a list of Block elements into sections. `Div`s will be created beginning at each `Header` and containing following content until the next Header of comparable level.
+---@field normalize_date fun(date: string): string|nil Parse a date and convert (if possible) to “YYYY-MM-DD” format. Returns `nil` if normalization fails.
+---@field references fun(doc: Pandoc): table Get references defined inline in the metadata and via an external bibliography.
+---@field run_json_filter fun(doc: Pandoc, filter?: string, args?: string[]): Pandoc Filter the given doc by passing it through a JSON filter.
+---@field sha1 fun(input: string): string Computes the SHA1 hash of the given string input.
+---@field stringify fun(element: Block|Inline|Meta|MetaValue|Pandoc): string Converts the given element (Block, Inline, Meta, MetaValue, Pandoc) into a string with all formatting removed.
+---@field to_roman_numeral fun(n: integer): string Converts an integer < 4000 to uppercase roman numeral.
+---@field to_simple_table fun(tbl: Table): SimpleTable Converts a table into an old/simple table.
+---@field type fun(value: any): string Pandoc-friendly version of Lua’s default type function, returning type information similar to what is presented in the manual.
+---@field Version fun(v: integer|integer[]|string): Version Creates a Version object.

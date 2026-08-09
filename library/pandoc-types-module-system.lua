@@ -1,0 +1,24 @@
+---@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
+---@meta pandoc-types-module-system
+-- The `pandoc.system` module (environment/tempdir/cwd helpers) and its callback-result type.
+--
+-- Part of the split pandoc-types LuaLS annotation set. Files in this set
+-- cross-reference each other's types freely -- LuaLS resolves @class/@alias
+-- names across ALL files in the same library folder, so file boundaries here
+-- are purely organizational and carry no functional meaning.
+
+---Access to the system’s information and file functionality.
+---@class PandocSystemModule
+---@field arch string The machine architecture on which the program is running.
+---@field cputime fun(): integer Returns the number of picoseconds CPU time used by the current program. The precision of this result may vary in different versions and on different platforms.
+---@field environment fun(): table<string,string> Retrieves the entire environment as a string-indexed table.
+---@field get_working_directory fun(): string Obtain the current working directory as an absolute path.
+---@field list_directory fun(directory?: string): string[] List the contents of a directory.
+---@field make_directory fun(dirname: string, create_parent?: boolean) Create a new directory which is initially empty, or as near to empty as the operating system allows. The function throws an error if the directory cannot be created, e.g., if the parent directory does not exist or if a directory of the same name is already present.
+---@field os string The operating system on which the program is running.
+---@field remove_directory fun(dirname: string, recursive?: boolean) Remove an existing, empty directory. If `recursive` is given, then delete the directory and its contents recursively.
+---@field with_environment fun(environment: table<string,string>, callback: fun()): CallbackResults Run an action within a custom environment. Only the environment variables given by `environment` will be set, when `callback` is called. The original environment is restored after this function finishes, even if an error occurs while running the callback action.
+---@field with_temporary_directory fun(parent_dir: string, templ: string, callback: fun()): CallbackResults Create and use a temporary directory inside the given directory. The directory is deleted after the callback returns.
+---@field with_working_directory fun(directory: string, callback: fun()): CallbackResults Run an action within a different directory. This function will change the working directory to `directory`, execute `callback`, then switch back to the original working directory, even if an error occurs while running the callback action.
+
+---@class CallbackResults The results of a callback when calling `pandoc.system.with_environment`, `pandoc.system.with_temporary_directory` and `pandoc.system.with_working_directory`.

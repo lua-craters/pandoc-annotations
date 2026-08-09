@@ -1,0 +1,120 @@
+---@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
+---@meta pandoc-types-module-core
+-- The top-level `pandoc` constructors table and the format-list type used by `pandoc.read`.
+--
+-- Part of the split pandoc-types LuaLS annotation set. Files in this set
+-- cross-reference each other's types freely -- LuaLS resolves @class/@alias
+-- names across ALL files in the same library folder, so file boundaries here
+-- are purely organizational and carry no functional meaning.
+
+---@class pandoc
+---@field AlignCenter Alignment
+---@field AlignDefault Alignment
+---@field AlignLeft Alignment
+---@field AlignRight Alignment
+---@field Attr fun(identifier?: string, classes?: string[], attributes?: table<string,string>): Attr `Attr` constructor.
+---@field AuthorInText CitationMode
+---@field BlockQuote fun(content: Blocks): BlockQuote `BlockQuote` constructor.
+---@field Blocks fun(blocks: Block|Block[]): Blocks Creates a `Blocks` list. Accepts either a single `Block` or a list of blocks; the parameter is required (calling with no arguments errors at runtime).
+---@field BulletList fun(items: List<Blocks>): BulletList `BulletList` constructor.
+---@field Caption fun(long?: Blocks, short?: Inlines): Caption  -- `Caption` constructor.
+---@field Cell fun(content: Blocks, align?: Alignment, row_span?: integer, col_span?: integer, attr?: Attr): Cell `Cell` (of `Table`) constructor. All parameters after `content` are optional.
+---@field Citation fun(id: string, mode?: CitationMode, prefix?: Inlines, suffix?: Inlines, note_num?: integer, hash?: integer): Citation `Citation` constructor.
+---@field Cite fun(content: Inlines, citations: List<Citation>): Cite `Cite` constructor.
+---@field cli PandocCliModule
+---@field Code fun(text: string, attr?: Attr): Code `Code` constructor.
+---@field CodeBlock fun(text: string, attr?: Attr): CodeBlock `CodeBlock` constructor.
+---@field Decimal ListNumberStyle
+---@field DefaultDelim ListNumberDelim
+---@field DefaultStyle ListNumberStyle
+---@field DefinitionList fun(content: List<DefinitionListItem>): DefinitionList `DefinitionList` constructor.
+---@field DisplayMath MathType
+---@field Div fun(content: Blocks, attr?: Attr): Div `Div` constructor.
+---@field DoubleQuote QuoteType
+---@field Emph fun(content: Inlines): Emph `Emph` constructor.
+---@field Example ListNumberStyle
+---@field Figure fun(content: Blocks, caption?: Caption, attr?: Attr): Figure `Figure` constructor.
+---@field format PandocFormatModule
+---@field Header fun(level: integer, content: Inlines, attr?: Attr): Header `Header` constructor.
+---@field HorizontalRule fun(): HorizontalRule `HorizontalRule` constructor.
+---@field Image fun(caption: Inlines|Inline[], src: string, title?: string, attr?: Attr): Image `Image` constructor.
+---@field InlineMath MathType
+---@field Inlines fun(inlines: Inline|Inline[]|string): Inlines Creates an `Inlines` list. Accepts a single `Inline`, a list of inlines, or a plain string (converted to `Str`/`Space` inlines); the parameter is required (calling with no arguments errors at runtime).
+---@field json PandocJsonModule
+---@field layout PandocLayoutModule
+---@field LineBlock fun(content: List<Inlines>): LineBlock `LineBlock` constructor.
+---@field LineBreak fun(): LineBreak `LineBreak` constructor.
+---@field Link fun(content: Inlines|Inline[], target: string, title?: string, attr?: Attr): Link `Link` constructor.
+---@field List fun(items?: table): List `List` constructor
+---@field ListAttributes fun(start?: integer, style?: ListNumberStyle, delimiter?: ListNumberDelim): ListAttributes `ListAttributes` constructor.
+---@field log PandocLogModule
+---@field LowerAlpha ListNumberStyle
+---@field LowerRoman ListNumberStyle
+---@field Math fun(mathtype: MathType): Math `Math` constructor.
+---@field mediabag PandocMediabagModule
+---@field Meta fun(meta_maps: table<string, MetaValue>): Meta `Meta` object constructor.
+---@field MetaBlocks fun(blocks: Blocks): Blocks `MetaBlocks` constructor.
+---@field MetaBool fun(bool: boolean): boolean `MetaBool` constructor (returns native boolean).
+---@field MetaInlines fun(inlines: Inlines): Inlines `MetaInlines` constructor.
+---@field MetaList fun(meta_values: List<MetaValue>): List<MetaValue> `MetaList` constructor.
+---@field MetaMap fun(key_value_map: table<string, MetaValue>): MetaMap `MetaMap` constructor.
+---@field MetaString fun(str: string): string `MetaString` constructor (returns native string).
+---@field NormalCitation CitationMode
+---@field Note fun(content: Blocks): Note `Note` constructor.
+---@field OneParen ListNumberDelim
+---@field OrderedList fun(items: List<Blocks>, listAttributes?: ListAttributes): OrderedList `OrderedList` constructor.
+---@field Pandoc fun(blocks: Blocks, meta?: Meta): Pandoc Pandoc document constructor.
+---@field Para fun(content: Inlines|Inline[]): Para `Para` constructor.
+---@field path PandocPathModule
+---@field Period ListNumberDelim
+---@field pipe fun(command: string, args: string[], input: string): string Runs command with the given arguments, passing it the given input, and returns the output as a string. Raises a Lua error if the command exits with a non-zero status (confirmed via testing: the error is not returned as a normal value, so wrap calls in `pcall` to handle failures gracefully).
+---@field Plain fun(content: Inlines|Inline[]): Plain `Plain` constructor.
+---@field Quoted fun(quotetype: QuoteType, content: Inlines): Quoted `Quoted` constructor.
+---@field RawBlock fun(format: string, text: string): RawBlock `RawBlock` constructor.
+---@field RawInline fun(format: string, text: string): RawInline `RawInline` constructor.
+---@field read fun(markup: string|Source[], format?: string|FormatTable, reader_options?: ReaderOptions): Pandoc Parse the given string into a Pandoc document.
+---@field ReaderOptions fun(opts: ReaderOptions): ReaderOptions `ReaderOptions` constructor.
+---@field readers table<string,boolean> Set of formats that pandoc can parse. All keys in this table can be used as the `format` value in `pandoc.read`.
+---@field Row fun(cells?: List<Cell>, attr?: Attr): Row `Table` row constructor. Both parameters are optional.
+---@field scaffolding PandocScaffoldingModule
+---@field sha1 fun(input: string): string Computes the SHA1 hash of the given string input.
+---@field SimpleTable fun(caption: Caption, aligns: List<Alignment>, widths: List<number>, headers: List<Blocks>, rows: List<List<Blocks>>): SimpleTable `SimpleTable` (pre Pandoc 2.10) constructor.
+---@field SingleQuote QuoteType
+---@field SmallCaps fun(content: Inlines): SmallCaps `SmallCaps` constructor.
+---@field SoftBreak fun(): SoftBreak `SoftBreak` constructor.
+---@field Space fun(): Space `Space` constructor.
+---@field Span fun(content: Inlines|Inline[], attr?: Attr): Span `Span` constructor.
+---@field Str fun(text: string): Str `Str` constructor.
+---@field Strikeout fun(content: Inlines): Strikeout `Strikeout` constructor.
+---@field Strong fun(content: Inlines): Strong `Strong` constructor.
+---@field structure PandocStructureModule
+---@field Subscript fun(content: Inlines): Subscript `Subscript` constructor.
+---@field Superscript fun(content: Inlines): Superscript `Superscript` constructor.
+---@field SuppressAuthor CitationMode
+---@field system PandocSystemModule
+---@field Table fun(caption: Caption, colspecs: List<ColSpec>, head: TableHead, bodies: List<TableBody>, foot: TableFoot, attr?: Attr): Table `Table` constructor.
+---@field TableBody fun(head_rows?: List<Row>, body_rows?: List<Row>, row_head_columns?: integer, attr?: Attr): TableBody `TableBody` constructor. NOTE: `head_rows` here means the "intermediate head" rows nested inside this body (per the Pandoc AST), not the table's overall head. Positional-argument calls are confirmed working; calling with a single keyword table (e.g. `pandoc.TableBody{body = rows}`) is NOT reliable for every field on every constructor in this family (`TableHead{rows = ...}` silently produces an empty head) — prefer positional arguments for `TableHead`/`TableBody`/`TableFoot`/`Row`/`Cell`.
+---@field TableFoot fun(rows?: List<Row>, attr?: Attr): TableFoot `TableFoot` constructor.
+---@field TableHead fun(rows?: List<Row>, attr?: Attr): TableHead `TableHead` constructor. NOTE: prefer positional args; `pandoc.TableHead{rows = {...}}` has been observed to silently drop the rows.
+---@field template PandocTemplateModule
+---@field text PandocTextModule
+---@field TwoParens ListNumberDelim
+---@field types PandocTypesModule
+---@field Underline fun(content: Inlines): Underline `Underline` constructor.
+---@field UpperAlpha ListNumberStyle
+---@field UpperRoman ListNumberStyle
+---@field utils PandocUtilsModule
+---@field walk_block fun(element: Block, filter: Filter): BlockFilterResult
+---@field walk_inline fun(element: Inline, filter: Filter): InlineFilterResult
+---@field write fun(doc: Pandoc, format?:string|FormatTable, writer_options?: WriterOptions): string Converts a document to the given target format.
+---@field write_classic fun(doc: Pandoc, writer_options?: WriterOptions): string Runs a classic custom Lua writer, using the functions defined in the current environment.
+---@field WriterOptions fun(opts: WriterOptions): WriterOptions `WriterOptions` constructor.
+---@field writers table<string,boolean> Set of formats that pandoc can generate. All keys in this table can be used as the `format` value in `pandoc.write`.
+---@field zip PandocZipModule
+---field AttributeList fun(attributes: table<string,string>): userdata
+---field Block
+---field Inline
+
+---@class FormatTable Used as eventual second argument of `pandoc.read`.
+---@field format string
+---@field extensions table<string,ExtensionState>

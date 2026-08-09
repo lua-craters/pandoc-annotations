@@ -1,0 +1,24 @@
+---@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
+---@meta pandoc-types-module-path
+-- The `pandoc.path` module (filesystem path manipulation).
+--
+-- Part of the split pandoc-types LuaLS annotation set. Files in this set
+-- cross-reference each other's types freely -- LuaLS resolves @class/@alias
+-- names across ALL files in the same library folder, so file boundaries here
+-- are purely organizational and carry no functional meaning.
+
+---Module for file path manipulations.
+---@class PandocPathModule
+---@field directory fun(filepath: string): string Gets the directory name, i.e., removes the last directory separator and everything after from the given path.
+---@field filename fun(filepath: string): string Get the file name.
+---@field is_absolute fun(filepath: string): boolean Checks whether a path is absolute, i.e. not fixed to a root.
+---@field is_relative fun(filepath: string): boolean Checks whether a path is relative or fixed to a root.
+---@field join fun(filepaths: string[]): string Join path elements back together by the directory separator.
+---@field make_relative fun(path: string, root: string, unsafe?: boolean): string Contract a filename, based on a relative path. Note that the resulting path will never introduce `..` paths, as the presence of symlinks means `../b` may not reach `a/b` if it starts from `a/c`.
+---@field normalize fun(filepath: string): string Normalizes a path.
+---@field search_path_separator string The character that is used to separate the entries in the `PATH` environment variable.
+---@field separator string The character that separates directories.
+---@field split fun(filepath: string): string[] Splits a path by the directory separator.
+---@field split_extension fun(filepath: string): string,string Splits the last extension from a file path and returns the parts. The extension, if present, includes the leading separator; if the path has no extension, then the empty string is returned as the extension.
+---@field split_search_path fun(search_path: string): string[] Takes a string and splits it on the search_path_separator character. Blank items are ignored on Windows, and converted to `.` on Posix. On Windows path elements are stripped of quotes.
+---@field treat_strings_as_paths fun() Augment the string module such that strings can be used as path objects.
