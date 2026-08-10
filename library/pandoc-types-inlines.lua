@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-inlines
 -- Inline and every Inline subtype.
 --

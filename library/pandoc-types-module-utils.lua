@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-utils
 -- The `pandoc.utils` module (stringify, type, hierarchicalize, and friends).
 --

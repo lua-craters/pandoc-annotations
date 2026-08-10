@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-path
 -- The `pandoc.path` module (filesystem path manipulation).
 --

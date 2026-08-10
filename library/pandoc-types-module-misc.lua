@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-misc
 -- The smaller pandoc submodules, grouped together since each is only a handful of lines on its own: `pandoc.text`, `.template`, `.format`, `.cli`, `.json`, `.log`, `.types` (+ Version), `.scaffolding`.
 --

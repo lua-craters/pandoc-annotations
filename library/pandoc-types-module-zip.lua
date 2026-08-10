@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-zip
 -- The `pandoc.zip` module and its archive/entry/options types.
 --

@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-system
 -- The `pandoc.system` module (environment/tempdir/cwd helpers) and its callback-result type.
 --

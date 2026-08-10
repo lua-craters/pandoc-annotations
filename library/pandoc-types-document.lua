@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-document
 -- Pandoc (the whole-document class) and Meta/MetaValue and its variants.
 --

@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-blocks
 -- Block and every Block subtype, including the full Table family (Row, Cell, TableHead, TableBody, TableFoot, Caption, ColSpec).
 --

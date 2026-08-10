@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-list-filter
 -- List<T> and its Blocks/Inlines subclasses, iterator/predicate/comparator/map-function aliases, and the Filter class.
 --

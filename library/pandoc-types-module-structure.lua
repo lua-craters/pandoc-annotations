@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-structure
 -- The `pandoc.structure` module (heading/section/chunking helpers) and its option and result types.
 --

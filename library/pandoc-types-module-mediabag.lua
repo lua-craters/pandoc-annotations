@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-mediabag
 -- The `pandoc.mediabag` module and its item-summary type.
 --

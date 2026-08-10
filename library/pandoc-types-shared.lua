@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-shared
 -- Attr/AttributeList/WithAttr/WithTag, Doc, Reader/Writer options, Template, CommonState, and the small tag-enum aliases used across many element types.
 --

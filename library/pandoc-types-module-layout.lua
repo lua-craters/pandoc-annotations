@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-layout
 -- The `pandoc.layout` module (Doc-builder combinators for custom writers).
 --

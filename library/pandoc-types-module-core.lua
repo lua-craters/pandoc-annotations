@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-doc-field, duplicate-doc-alias
 ---@meta pandoc-types-module-core
 -- The top-level `pandoc` constructors table and the format-list type used by `pandoc.read`.
 --
