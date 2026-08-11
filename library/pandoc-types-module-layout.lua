@@ -6,7 +6,7 @@
 -- names across ALL files in the same library folder, so file boundaries here
 -- are purely organizational and carry no functional meaning.
 
----Plain-text document layouting.
+---Plain-text document layout.
 ---@class PandocLayoutModule
 ---@field after_break fun(text: string): Doc Creates a `Doc` which is conditionally included only if it comes at the beginning of a line.
 ---@field before_non_blank fun(doc: Doc): Doc Conditionally includes the given `doc` unless it is followed by a blank space.

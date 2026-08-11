@@ -6,7 +6,7 @@
 -- names across ALL files in the same library folder, so file boundaries here
 -- are purely organizational and carry no functional meaning.
 
----@class pandoc
+---@class (exact) pandoc
 ---@field AlignCenter Alignment
 ---@field AlignDefault Alignment
 ---@field AlignLeft Alignment
@@ -110,9 +110,6 @@
 ---@field WriterOptions fun(opts: WriterOptions): WriterOptions `WriterOptions` constructor.
 ---@field writers table<string,boolean> Set of formats that pandoc can generate. All keys in this table can be used as the `format` value in `pandoc.write`.
 ---@field zip PandocZipModule
----field AttributeList fun(attributes: table<string,string>): userdata
----field Block
----field Inline
 
 ---@class FormatTable Used as eventual second argument of `pandoc.read`.
 ---@field format string

@@ -109,7 +109,7 @@
 ---@field section_divs? boolean Put sections in div tags in HTML.
 ---@field setext_headers? boolean Use setext headers for levels 1-2 in markdown.
 ---@field slide_level integer Force header level of slides.
----@field tab_stop? integer Tabstop for conversion btw spaces and tabs.
+---@field tab_stop? integer Tab stop for conversion btw spaces and tabs.
 ---@field table_of_contents? boolean Include table of contents.
 ---@field template? Template Template to use.
 ---@field toc_depth? integer Number of levels to include in TOC.

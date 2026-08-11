@@ -21,7 +21,7 @@
 ---  - Returning `nil` (or nothing) leaves the element untouched.
 ---  - Returning a replacement element/list replaces it. Returning `EmptyList` (or `{}`) deletes it.
 ---  - For elements that can contain other elements, the handler may return a SECOND value: `false`. Confirmed via testing: returning `(newElement, false)` stops the traversal from descending into the returned element's children — any handlers for element types nested inside it will NOT be called for that subtree. This is useful for e.g. protecting the contents of a `Div`/`Span` marked with a specific class from further processing.
----@class Filter
+---@class (exact) Filter
 ---@field Blocks? fun(blocks: Blocks): BlockFilterResult,boolean? `nil` = leave untouched, `EmptyList` = delete.
 ---@field BlockQuote? fun(blockquote: BlockQuote): BlockFilterResult,boolean? `nil` = leave untouched, `EmptyList` = delete. Confirmed callable via testing; was missing from earlier versions of this file.
 ---@field BulletList? fun(bulletlist: BulletList): BlockFilterResult,boolean? `nil` = leave untouched, `EmptyList` = delete.
